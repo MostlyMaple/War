@@ -1,13 +1,20 @@
 package application.Models;
 
-public class PlayerStoreDeck extends Player implements StorablePlayer{
+public class PlayerStoreDeck implements StorablePlayer {
 	
 	DeckOfCards cardsWon;
 	DeckOfCards cardsInHand;
 	
 	public PlayerStoreDeck() {
-		super();
 		this.cardsWon = new DeckOfCards();
+	}
+	
+	public DeckOfCards getCardsInHand() {
+		return cardsInHand;
+	}
+
+	public void setCardsInHand(DeckOfCards cardsInHand) {
+		this.cardsInHand = cardsInHand;
 	}
 	
 	public void addCardToKeepPile(Card newCard) {
@@ -17,5 +24,6 @@ public class PlayerStoreDeck extends Player implements StorablePlayer{
 	public int getKeepPileCount() {
 		return cardsWon.getCardCount();
 	}
+
 	
 }

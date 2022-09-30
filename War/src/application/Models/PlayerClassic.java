@@ -1,16 +1,20 @@
 package application.Models;
 
-public class PlayerClassic extends Player{
+public class PlayerClassic implements Player{
+	
+	DeckOfCards cardsInHand;
 	
 	public PlayerClassic() {
-		super();
-	}
-
-	public void addCardToKeepPile(Card newCard){}
-
-	public int getKeepPileCount() {
-		return 0;
+		
 	}
 	
+	public DeckOfCards getCardsInHand() {
+		return cardsInHand;
+	}
+
+	public void setCardsInHand(DeckOfCards cardsInHand) {
+		this.cardsInHand = cardsInHand;
+	}
+
 }
 

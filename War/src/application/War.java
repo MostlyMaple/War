@@ -45,36 +45,29 @@ public interface War {
 	public default int drawForWar(int numPlayers, Player[] players) {
 		ArrayList<Card> faceDownCards = new ArrayList<Card>();
 		Card[] drawnCards;
-		int winner;
+		int roundWinner;
 		
-		if (checkForEmptyHands(numPlayers, players)) {
+		if (checkForEmptyHands(numPlayers, players))
 			return END_GAME;
-		}
 		
 		drawnCards = drawCards(numPlayers, players);
 		
 		if (checkForWar(drawnCards)) {
 			storeThreeCards(faceDownCards, numPlayers, players);
-			winner = drawForWar(numPlayers, players);
-			if (winner == END_GAME) {
-				return END_GAME;
-			}
-		} else {
-			winner = calculateHighCard(drawnCards, numPlayers);
-			printRoundWinner(winner);
-			giveWinnerCards(winner, drawnCards, faceDownCards);
-			return winner;
+			roundWinner = drawForWar(numPlayers, players);
+			giveWinnerCards(roundWinner, drawnCards, faceDownCards);
+			return roundWinner;
 		}
 		
-		giveWinnerCards(winner, drawnCards, faceDownCards);
-		
-		return winner;
+		roundWinner = calculateHighCard(drawnCards, numPlayers);
+		printRoundWinner(roundWinner);
+		giveWinnerCards(roundWinner, drawnCards, faceDownCards);
+		return roundWinner;
 	}
 	
 	public default boolean checkForEmptyHands(int numPlayers, Player[] players) {
 		for (int i = 0; i < numPlayers; i++) {
-			if (players[i].getHandCardCount() <= 0) {
-				System.out.println("Player " + (i + 1) + " has run out of cards");
+			if (players[i].getHandCardCount(players[i].getCardsInHand()) <= 0) {
 				return true;
 			}
 		}
@@ -84,7 +77,7 @@ public interface War {
 	public default void storeThreeCards(ArrayList<Card> faceDownCards, int numPlayers, Player[] players) {
 		for (int i = 0; i < numPlayers; i++) {
 			for (int j = 0; j < 3; j++) {
-				faceDownCards.add(players[i].drawCard());
+				faceDownCards.add(players[i].drawCard(players[i].getCardsInHand()));
 			}
 		}
 	}
@@ -96,7 +89,7 @@ public interface War {
 	public default Card[] drawCards(int numPlayers, Player[] players) {
 		Card[] drawnCards = new Card[numPlayers];
 		for (int i = 0; i < numPlayers; i++) {
-			drawnCards[i] = players[i].drawCard();
+			drawnCards[i] = players[i].drawCard(players[i].getCardsInHand());
 			System.out.println("Player " + (i + 1) + " plays " + drawnCards[i].toString());
 		}
 		return drawnCards;

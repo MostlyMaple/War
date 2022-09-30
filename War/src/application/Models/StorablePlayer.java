@@ -1,8 +1,8 @@
 package application.Models;
 
-public interface StorablePlayer {
+public interface StorablePlayer extends Player {
 	
-	public void addCardToKeepPile(Card newCard);
+	void addCardToKeepPile(Card newCard);
 	
-	public int getKeepPileCount();
+	int getKeepPileCount();
 }

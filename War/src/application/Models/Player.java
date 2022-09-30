@@ -1,50 +1,44 @@
 package application.Models;
 
-public abstract class Player {
+public interface Player {
 	
-	DeckOfCards cardsInHand;
-	
-	public Card drawCard() {
+	public default Card drawCard(DeckOfCards cardsInHand) {
 		Card drawnCard; 
-		if (hasCardLeft()) {
+		if (hasCardLeft(cardsInHand)) {
 			drawnCard = cardsInHand.getTopCard();
 			return drawnCard;
 		}
 		return null;
 	}
 	
-	public boolean hasCardLeft() {
+	public default boolean hasCardLeft(DeckOfCards cardsInHand) {
 		if (cardsInHand.getCardCount() > 0) {
 			return true;
 		}
 		return false;
 	}
 
-	public DeckOfCards getCardsInHand() {
+	public default DeckOfCards getCardsInHand(DeckOfCards cardsInHand) {
 		return cardsInHand;
 	}
 
-	public void setCardsInHand(DeckOfCards cardsInHand) {
-		this.cardsInHand = cardsInHand;
-	}
-	
-	public String handToString() {
+	public default String handToString(DeckOfCards cardsInHand) {
 		return cardsInHand.toString();
 	}
 	
-	public boolean isHandEmpty() {
+	public default boolean isHandEmpty(DeckOfCards cardsInHand) {
 		return cardsInHand.isDeckEmpty();
 	}
 	
-	public void addCardToHand(Card newCard) {
-		this.cardsInHand.addCardToBottom(newCard);
+	public default void addCardToHand(DeckOfCards cardsInHand, Card newCard) {
+		cardsInHand.addCardToBottom(newCard);
 	}
 	
-	public int getHandCardCount() {
+	public default int getHandCardCount(DeckOfCards cardsInHand) {
 		return cardsInHand.getCardCount();
 	}
 	
-	public abstract void addCardToKeepPile(Card newCard);
+	DeckOfCards getCardsInHand();
 	
-	public abstract int getKeepPileCount();
+	void setCardsInHand(DeckOfCards cardsInHand);
 }

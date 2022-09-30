@@ -8,7 +8,6 @@ import application.Models.PlayerStoreDeck;
 public class WarStoreDeck implements War {
 	
 	int numPlayers;
-	int roundCount;
 	PlayerStoreDeck players[];
 	int seed;
 	DeckOfCards originalDeck;
@@ -25,7 +24,7 @@ public class WarStoreDeck implements War {
 	
 	public void runGame() {
 		dealCards(originalDeck, numPlayers, players);
-		for (int i = 0; i < 10000; i++) {
+		while (true) {
 			if (drawForWar(numPlayers, players) == -1)
 				break;
 			showScore();
