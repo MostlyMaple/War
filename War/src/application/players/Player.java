@@ -1,4 +1,7 @@
-package application.Models;
+package application.players;
+
+import cardGame.Card;
+import cardGame.DeckOfCards;
 
 public interface Player {
 	

@@ -1,4 +1,6 @@
-package application.Models;
+package application.players;
+
+import cardGame.Card;
 
 public interface StorablePlayer extends Player {
 	

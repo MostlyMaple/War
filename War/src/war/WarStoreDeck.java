@@ -1,9 +1,10 @@
-package application;
+package war;
 
 import java.util.ArrayList;
-import application.Models.Card;
-import application.Models.DeckOfCards;
-import application.Models.PlayerStoreDeck;
+
+import application.players.PlayerStoreDeck;
+import cardGame.Card;
+import cardGame.DeckOfCards;
 
 public class WarStoreDeck implements War {
 	

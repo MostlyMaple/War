@@ -1,4 +1,4 @@
-package application.Models;
+package cardGame;
 
 public class Card {
 	int suit;

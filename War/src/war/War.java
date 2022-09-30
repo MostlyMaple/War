@@ -1,12 +1,12 @@
-package application;
+package war;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-import application.Models.Card;
-import application.Models.DeckOfCards;
-import application.Models.Player;
+import application.players.Player;
+import cardGame.Card;
+import cardGame.DeckOfCards;
 
 public interface War {
 	final int END_GAME = -1;

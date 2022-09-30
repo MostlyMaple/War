@@ -1,4 +1,4 @@
-package application.Models;
+package cardGame;
 import java.util.ArrayList;
 import java.util.Random;
 

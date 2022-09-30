@@ -1,4 +1,6 @@
-package application.Models;
+package application.players;
+
+import cardGame.DeckOfCards;
 
 public class PlayerClassic implements Player{
 	
