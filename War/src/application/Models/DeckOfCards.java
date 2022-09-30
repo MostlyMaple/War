@@ -13,11 +13,11 @@ public class DeckOfCards {
 		deckEmpty = true;
 	}
 
-	public DeckOfCards(boolean shuffled) {
+	public DeckOfCards(boolean shuffled, int seed) {
 		deck = new ArrayList<Card>();
 		this.createCards();
 		if (shuffled) {
-			shuffleDeck();
+			shuffleDeck(seed);
 		}
 	}
 	
@@ -30,8 +30,8 @@ public class DeckOfCards {
 		}
 	}
 	
-	public void shuffleDeck() {
-		Random rand = new Random();
+	public void shuffleDeck(int seed) {
+		Random rand = new Random(seed);
 		Card removedCard;
 		ArrayList<Card> shuffledCardStack = new ArrayList<Card>();
 		int sizeOfStack;
@@ -46,15 +46,20 @@ public class DeckOfCards {
 	
 	public DeckOfCards[] splitDeck(int numPlayers) {
 		DeckOfCards playerDecks[] = new DeckOfCards[numPlayers];
+		
 		for (int i = 0; i < numPlayers; i++) {
 			playerDecks[i] = new DeckOfCards();
+			playerDecks[i].deckEmpty = false;
 		}
-		int currentHand = 0;
+		
+		int cardsPerPlayer = deck.size() / numPlayers;
 		Card currentCard;
-		while (deck.isEmpty() == false) {
-			currentCard = getTopCard();
-			(playerDecks[currentHand].deck).add(currentCard);
-			currentHand = (currentHand + 1) % numPlayers;
+		
+		for (int currentHand = 0; currentHand < numPlayers; currentHand++) {
+			for (int i = 0; i < cardsPerPlayer; i++) {
+				currentCard = getTopCard();
+				playerDecks[currentHand].addCardToTop(currentCard);
+			}
 		}
 		
 		return playerDecks;	
@@ -63,7 +68,7 @@ public class DeckOfCards {
 	
 	public String toString() {
 		String deckPrint = "";
-		for (int i = 0; i < CARDCOUNT; i++) {
+		for (int i = 0; i < getCardCount(); i++) {
 			deckPrint = deckPrint + deck.get(i).toString();
 		}
 		return deckPrint;
@@ -93,4 +98,26 @@ public class DeckOfCards {
 		this.deck = deck;
 	}
 
+	
+	public void addCardToBottom(Card newCard) {
+		deck.add(0, newCard);
+	}
+	
+	public void addCardToTop(Card newCard) {
+		deck.add(newCard);
+	}
+	
+	
+	public int getCardCount() {
+		return deck.size();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

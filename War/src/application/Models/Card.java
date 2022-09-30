@@ -23,13 +23,13 @@ public class Card {
 	public String printValue() {
 		String cardPrint = "";
 		if (this.value == 11) {
-			cardPrint = cardPrint + "Jack";
+			cardPrint = cardPrint + "JACK";
 		} else if (this.value == 12) {
-			cardPrint = cardPrint + "Queen";
+			cardPrint = cardPrint + "QUEEN";
 		} else if (this.value == 13) {
-			cardPrint = cardPrint + "King";
+			cardPrint = cardPrint + "KING";
 		} else if (this.value == 1) {
-			cardPrint = cardPrint + "Ace";
+			cardPrint = cardPrint + "ACE";
 		} else {
 			cardPrint = cardPrint + this.value;
 		}
@@ -40,16 +40,16 @@ public class Card {
 		String cardPrint = "";
 		switch (this.suit) {
 		case 0:
-			cardPrint = cardPrint + " of Hearts\n";
+			cardPrint = cardPrint + " of HEARTS";
 			break;
 		case 1:
-			cardPrint = cardPrint + " of Diamonds\n";
+			cardPrint = cardPrint + " of DIAMONDS";
 			break;
 		case 2:
-			cardPrint = cardPrint + " of Spades\n";
+			cardPrint = cardPrint + " of SPADES";
 			break;
 		case 3:
-			cardPrint = cardPrint + " of Clubs\n";
+			cardPrint = cardPrint + " of CLUBS";
 			break;
 		default:
 			System.err.println("Incorrect Suit Value");
@@ -60,8 +60,8 @@ public class Card {
 	
 
 	public int getCardValue() {
-		if (this.value >= 10) {
-			return 10;
+		if (this.value == 1) {
+			return 14;
 		} else {
 			return this.value;
 		}

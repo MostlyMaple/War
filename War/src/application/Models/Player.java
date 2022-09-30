@@ -1,45 +1,50 @@
 package application.Models;
 
-import java.util.ArrayList;
-
-public class Player {
-	ArrayList<Card> cardsInHand = new ArrayList<Card>();
+public abstract class Player {
 	
-	
-	public void addCard(Card newCard) {
-		cardsInHand.add(newCard);
-	}
+	DeckOfCards cardsInHand;
 	
 	public Card drawCard() {
 		Card drawnCard; 
 		if (hasCardLeft()) {
-			drawnCard = cardsInHand.get(cardsInHand.size());
-			cardsInHand.remove(cardsInHand.size());
+			drawnCard = cardsInHand.getTopCard();
 			return drawnCard;
 		}
 		return null;
 	}
 	
 	public boolean hasCardLeft() {
-		if (cardsInHand.size() > 0) {
+		if (cardsInHand.getCardCount() > 0) {
 			return true;
 		}
 		return false;
 	}
 
-	public ArrayList<Card> getCardsInHand() {
+	public DeckOfCards getCardsInHand() {
 		return cardsInHand;
 	}
 
-	public void setCardsInHand(ArrayList<Card> cardsInHand) {
+	public void setCardsInHand(DeckOfCards cardsInHand) {
 		this.cardsInHand = cardsInHand;
 	}
 	
-	public String deckToString() {
-		String deckPrint = "";
-		for (int i = 0; i < cardsInHand.size(); i++) {
-			deckPrint = deckPrint + cardsInHand.get(i).toString();
-		}
-		return deckPrint;
+	public String handToString() {
+		return cardsInHand.toString();
 	}
+	
+	public boolean isHandEmpty() {
+		return cardsInHand.isDeckEmpty();
+	}
+	
+	public void addCardToHand(Card newCard) {
+		this.cardsInHand.addCardToBottom(newCard);
+	}
+	
+	public int getHandCardCount() {
+		return cardsInHand.getCardCount();
+	}
+	
+	public abstract void addCardToKeepPile(Card newCard);
+	
+	public abstract int getKeepPileCount();
 }
