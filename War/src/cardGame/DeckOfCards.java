@@ -21,7 +21,7 @@ public class DeckOfCards {
 		}
 	}
 	
-	public void createCards() {
+	private void createCards() {
 		for (int i = 0; i < 4; i++) {
 			for (int j = 1; j <= 13; j++) {
 				Card newCard = new Card(i,j);
@@ -30,7 +30,7 @@ public class DeckOfCards {
 		}
 	}
 	
-	public void shuffleDeck(int seed) {
+	private void shuffleDeck(int seed) {
 		Random rand = new Random(seed);
 		Card removedCard;
 		ArrayList<Card> shuffledCardStack = new ArrayList<Card>();

@@ -1,8 +1,8 @@
 package cardGame;
 
 public class Card {
-	int suit;
-	int value;
+	private int suit;
+	private int value;
 	
 	public Card() {
 		
