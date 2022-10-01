@@ -1,10 +1,10 @@
-package war;
+package application.war;
 
 import java.util.ArrayList;
 
+import application.cardGame.Card;
+import application.cardGame.DeckOfCards;
 import application.players.PlayerClassic;
-import cardGame.Card;
-import cardGame.DeckOfCards;
 
 public class WarClassic implements War {
 	

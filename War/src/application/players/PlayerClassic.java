@@ -1,6 +1,6 @@
 package application.players;
 
-import cardGame.DeckOfCards;
+import application.cardGame.DeckOfCards;
 
 public class PlayerClassic implements Player{
 	

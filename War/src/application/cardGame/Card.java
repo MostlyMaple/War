@@ -1,4 +1,4 @@
-package cardGame;
+package application.cardGame;
 
 public class Card {
 	private int suit;

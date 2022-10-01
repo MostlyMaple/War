@@ -1,18 +1,17 @@
-package war;
+package application.war;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+import application.cardGame.Card;
+import application.cardGame.DeckOfCards;
 import application.players.Player;
-import cardGame.Card;
-import cardGame.DeckOfCards;
 
 public interface War {
 	final int END_GAME = -1;
 	
 	public default void dealCards(DeckOfCards originalDeck, int numPlayers, Player[] players) {
-		System.out.println("Dealing Cards\n");
 		DeckOfCards[] dealtHands = originalDeck.splitDeck(numPlayers);
 		for (int i = 0; i < numPlayers; i++) {
 			players[i].setCardsInHand(dealtHands[i]);

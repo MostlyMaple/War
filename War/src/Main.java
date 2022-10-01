@@ -1,4 +1,4 @@
-package application;
+
 
 import application.war.War;
 import application.war.WarClassic;

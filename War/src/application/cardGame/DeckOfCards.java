@@ -1,4 +1,4 @@
-package cardGame;
+package application.cardGame;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -80,6 +80,14 @@ public class DeckOfCards {
 			setDeckEmpty(true);
 		}
 		return topCard;
+	}
+	
+	public Card getBottomCard() {
+		Card bottomCard = deck.remove(0);
+		if (deck.isEmpty()) {
+			setDeckEmpty(true);
+		}
+		return bottomCard;
 	}
 	
 	public void setDeckEmpty(boolean deckEmpty) {

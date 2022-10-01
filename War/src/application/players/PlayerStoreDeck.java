@@ -1,7 +1,7 @@
 package application.players;
 
-import cardGame.Card;
-import cardGame.DeckOfCards;
+import application.cardGame.Card;
+import application.cardGame.DeckOfCards;
 
 public class PlayerStoreDeck implements StorablePlayer {
 	
